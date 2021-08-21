@@ -24,13 +24,6 @@ client.connect(err => {
   const allAdminCollection = client.db("tripStudio").collection("adminList");
     console.log('database connection success');
 
-    // app.post('/addAllServices', (req, res) => {
-    //   const allServices = req.body;
-    //   allServicesCollection.insertMany(allServices)
-    //   .then(result => {
-    //     res.send(result)
-    //   })
-    // })
 
 
     app.get('/showAllServices', (req, res) => {
@@ -79,7 +72,7 @@ client.connect(err => {
 
   app.post('/addNewServices', (req, res) => {
     const newService = req.body;
-    console.log(newService);
+    // console.log(newService);
     allServicesCollection.insertOne(newService)
     .then(result => {
       res.send(result.insertedCount > 0)
@@ -97,55 +90,6 @@ client.connect(err => {
             res.send(documents[0]);
         })
 })
-
-// app.post('/showAllBookingsOne', (req, res) => {
-//     const bookingId = req.body;
-//     console.log(bookingId);
-//     allUsersBookingCollection.find({_id: ObjectId(bookingId) })
-//         .toArray((err, documents) => {
-//             console.log(documents);
-//             res.send(documents);
-//         })
-// })
-
-
-       // app.post('/addAllReviews', (req, res) => {
-    //     const allReviews = req.body;
-    //     allReviewsCollection.insertMany(allReviews)
-    //     .then(result => {
-    //       res.send(result.insertedCount > 0)
-    //     })
-    //   })
-
-        // app.get('/showAllReviews', (req, res) => {
-    //     allReviewsCollection.find({})
-    //         .toArray((err, documents) => {
-    //             res.send(documents);
-    //         })
-    // }) 
-
-
-//   app.post('/addNewReview', (req, res) => {
-//     const newReview = req.body;
-//     console.log(newReview);
-//     allReviewsCollection.insertOne(newReview)
-//     .then(result => {
-//       res.send(result.insertedCount > 0)
-//     })
-
-//   })  
-
-
-//   app.post('/addNewServices', (req, res) => {
-//     const newService = req.body;
-//     console.log(newService);
-//     allServicesCollection.insertOne(newService)
-//     .then(result => {
-//       res.send(result.insertedCount > 0)
-//     })
-
-//   })  
-
 
 
 
@@ -181,13 +125,13 @@ app.post('/isAdmin', (req, res) => {
 // })
 
 
-// app.delete('/deleteService/:id', (req, res) =>{
-//   allServicesCollection.deleteOne({_id:ObjectId(req.params.id)})
-//   .then((result) =>{
-//       // console.log(result)
-//       res.send(result.deletedCount > 0)
-//   })
-// })
+app.delete('/deleteService/:id', (req, res) =>{
+  allServicesCollection.deleteOne({_id:ObjectId(req.params.id)})
+  .then((result) =>{
+      // console.log(result)
+      res.send(result.deletedCount > 0)
+  })
+})
 
 
     
